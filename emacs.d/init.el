@@ -6,6 +6,8 @@
   ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t))
 
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -18,8 +20,6 @@
  '(package-selected-packages
    (quote
     (yaml-mode groovy-mode magit json-mode multi-term solarized-theme es-mode swiper company ivy find-file-in-repository))))
-
-(package-initialize)
 
 ;; Install selected packages if needed
 (unless package-archive-contents
