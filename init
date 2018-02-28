@@ -2,13 +2,13 @@ resources=(
 	aliases
 	paths
 	prompt
+	secrets
 )
 
 for resource in ${resources[@]}
 do 
-    if [ -f $resource ];
+    if [ -f ~/.dotfiles/$resource ];
     then
-echo "Load"
-        . $resource
+        . ~/.dotfiles/$resource
     fi
 done
