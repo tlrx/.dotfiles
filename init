@@ -1,0 +1,14 @@
+resources=(
+	aliases
+	paths
+	prompt
+)
+
+for resource in ${resources[@]}
+do 
+    if [ -f $resource ];
+    then
+echo "Load"
+        . $resource
+    fi
+done
