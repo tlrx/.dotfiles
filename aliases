@@ -13,4 +13,4 @@ alias es="cd /home/tanguy/Dev/elastic/elasticsearch"
 alias xp="cd /home/tanguy/Dev/elastic/elasticsearch-extra/x-pack-elasticsearch/"
 
 # Gradle
-alias compile="./gradlew compileJava compileTestJava checkstyleMain checkstyleTest forbiddenApisMain forbiddenApis forbiddenApisTest"
+alias compile="./gradlew compileJava compileTestJava checkstyleMain checkstyleTest forbiddenApisMain forbiddenApis forbiddenApisTest licenseHeaders"
