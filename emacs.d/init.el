@@ -16,9 +16,11 @@
  '(custom-safe-themes
    (quote
     ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(elfeed-goodies/entry-pane-position (quote bottom))
+ '(elfeed-goodies/entry-pane-size 0.5)
  '(package-selected-packages
    (quote
-    (yaml-mode groovy-mode magit json-mode multi-term solarized-theme es-mode swiper company ivy find-file-in-repository java-imports hs-minor-mode counsel))))
+    (yaml-mode groovy-mode magit json-mode multi-term solarized-theme es-mode swiper company ivy find-file-in-repository hs-minor-mode counsel yasnippet elfeed elfeed-goodies))))
 
 ;; Install selected packages if needed
 (unless package-archive-contents
@@ -38,6 +40,8 @@
 (delete-selection-mode 1)
 (setq inhibit-startup-message t)
 (setq read-file-name-completion-ignore-case t)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;; Company mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -53,13 +57,13 @@
 
 ;; HideShow mode
 (add-hook 'prog-mode-hook #'hs-minor-mode)
+(add-hook 'es-result-mode-hook 'hs-minor-mode)
 
-;; Java Imports
-(require 'java-imports)
-(defun on-java-loaded ()
-  (define-key java-mode-map (kbd "M-I") 'java-imports-add-import-dwim))
-(setq java-imports-find-block-function 'java-imports-find-place-sorted-block)
-(add-hook 'java-mode-hook 'java-imports-scan-file)
+;; Es-mode
+(setq es-always-pretty-print t)
+
+;; Snippets
+(yas-global-mode 1)
 
 ;; Utils
 (defun get-point (symbol &optional arg)
@@ -84,6 +88,23 @@
        (interactive "P")
        (copy-thing 'beginning-of-line 'end-of-line arg))
 
+;; RSS
+(require 'elfeed)
+(require 'elfeed-goodies)
+
+(elfeed-goodies/setup)
+(setq elfeed-use-curl t)
+(setq elfeed-feeds
+        '(;; Blogs
+          ("http://blag.xkcd.com/feed/" blog)
+          ("http://blog.mikemccandless.com/feeds/posts/default" lucene blog)
+          ("http://www.elastic.co/blog/feed/" elasticsearch)
+          ;; Java
+          ("http://psy-lob-saw.blogspot.com/feeds/posts/default" blog java)
+          ("http://vanillajava.blogspot.de/feeds/posts/default" blog java)
+          ("http://feeds.feedburner.com/DanielMitterdorfer?format=xml" blog java)
+	  ("https://blogs.oracle.com/java-platform-group/rss" java)
+          ))
 
 ;; ------------------------
 ;; Key bindings
@@ -126,7 +147,7 @@
 
 ;; Others
 (global-set-key (kbd "C-S-d") 'speedbar)
-
+(global-set-key (kbd "C-x w") 'elfeed)
 
 ;; ------------------------
 ;; Java
@@ -134,30 +155,7 @@
 
 (defconst intellij-java-style
   '((c-basic-offset . 4)
-    (c-comment-only-line-offset . (0 . 0))
-    ;; the following preserves Javadoc starter lines
-    (c-offsets-alist
-     .
-     ((inline-open . 0)
-      (topmost-intro-cont    . +)
-      (statement-block-intro . my/statement-block-intro)
-      (block-close           . my/block-close)
-      (knr-argdecl-intro     . +)
-      (substatement-open     . +)
-      (substatement-label    . +)
-      (case-label            . +)
-      (label                 . +)
-      (statement-case-open   . +)
-      (statement-cont        . +)
-      (arglist-intro         . my/arglist-intro)
-      (arglist-cont-nonempty . (my/arglist-cont-nonempty-indentation c-lineup-arglist))
-      (arglist-close         . my/arglist-close)
-      (inexpr-class          . 0)
-      (access-label          . 0)
-      (inher-intro           . ++)
-      (inher-cont            . ++)
-      (brace-list-intro      . +)
-      (func-decl-cont        . ++))))
+    (c-comment-only-line-offset . (0 . 0)))
   "Elasticsearch's Intellij Java Programming Style")
 
 (c-add-style "intellij" intellij-java-style)
@@ -175,3 +173,9 @@
   (c-toggle-auto-newline 1))
 
 (add-hook 'java-mode-hook 'custom-java-mode-hook)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
