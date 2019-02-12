@@ -10,7 +10,10 @@ alias reset="git reset --soft HEAD~1"
 
 # Directories
 alias es="cd /home/tanguy/Dev/elastic/elasticsearch"
-alias xp="cd /home/tanguy/Dev/elastic/elasticsearch-extra/x-pack-elasticsearch/"
+alias es6="cd /home/tanguy/Dev/elastic/elasticsearch-6.x"
 
 # Gradle
-alias compile="./gradlew compileJava compileTestJava checkstyleMain checkstyleTest forbiddenApisMain forbiddenApis forbiddenApisTest licenseHeaders"
+alias clean="gradle clean --parallel"
+alias precommit="gradle precommit --parallel"
+alias assemble="gradle :distribution:archive:zip:assemble --parallel"
+

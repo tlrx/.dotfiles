@@ -4,9 +4,10 @@ export JAVA7_HOME=/opt/java/jdk1.7.0_80
 export JAVA8_HOME=/opt/java/jdk1.8.0_161
 export JAVA9_HOME=/opt/java/jdk-9.0.4
 export JAVA10_HOME=/opt/java/jdk-10.0.1
+export JAVA11_HOME=/opt/java/jdk-11
 
 export RUNTIME_JAVA_HOME=$JAVA10_HOME
-export JAVA_HOME=$JAVA10_HOME
+export JAVA_HOME=$JAVA11_HOME
 
 export MAVEN_HOME=/opt/maven/apache-maven-3.5.3
 
