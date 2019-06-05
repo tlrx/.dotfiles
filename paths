@@ -5,13 +5,17 @@ export JAVA8_HOME=/opt/java/jdk1.8.0_161
 export JAVA9_HOME=/opt/java/jdk-9.0.4
 export JAVA10_HOME=/opt/java/jdk-10.0.1
 export JAVA11_HOME=/opt/java/jdk-11
+export JAVA12_HOME=/opt/java/jdk-12.0.1
 
-export RUNTIME_JAVA_HOME=$JAVA10_HOME
-export JAVA_HOME=$JAVA11_HOME
+export RUNTIME_JAVA_HOME=$JAVA11_HOME
+export JAVA_HOME=$JAVA12_HOME
 
 export MAVEN_HOME=/opt/maven/apache-maven-3.5.3
 
-export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+export VAULT_HOME=/opt/vault
+export VAULT_ADDR=https://secrets.elastic.co:8200
+
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin:$VAULT_HOME
 
 # Gradle Wrapper
 

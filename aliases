@@ -15,5 +15,5 @@ alias es6="cd /home/tanguy/Dev/elastic/elasticsearch-6.x"
 # Gradle
 alias clean="gradle clean --parallel"
 alias precommit="gradle precommit --parallel"
-alias assemble="gradle :distribution:archive:zip:assemble --parallel"
+alias assemble="gradle :distribution:archive:windows-zip:assemble --parallel"
 
