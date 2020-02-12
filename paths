@@ -6,16 +6,27 @@ export JAVA9_HOME=/opt/java/jdk-9.0.4
 export JAVA10_HOME=/opt/java/jdk-10.0.1
 export JAVA11_HOME=/opt/java/jdk-11
 export JAVA12_HOME=/opt/java/jdk-12.0.1
+export JAVA13_HOME=/opt/java/jdk-13.0.1
+
+
+export JAVAzulu11_HOME=/opt/java/zulu11.35.13-ca-jdk11.0.5-linux_x64
 
 export RUNTIME_JAVA_HOME=$JAVA11_HOME
-export JAVA_HOME=$JAVA12_HOME
+export JAVA_HOME=$JAVA13_HOME
 
 export MAVEN_HOME=/opt/maven/apache-maven-3.5.3
+
+export ANT_HOME=/opt/ant/apache-ant-1.10.7
 
 export VAULT_HOME=/opt/vault
 export VAULT_ADDR=https://secrets.elastic.co:8200
 
-export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin:$VAULT_HOME
+export PYENV_HOME=/home/tanguy/.pyenv/bin
+
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin:$VAULT_HOME:$PYENV_HOME:$ANT_HOME/bin
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Gradle Wrapper
 
