@@ -7,12 +7,12 @@ export JAVA10_HOME=/opt/java/jdk-10.0.1
 export JAVA11_HOME=/opt/java/jdk-11
 export JAVA12_HOME=/opt/java/jdk-12.0.1
 export JAVA13_HOME=/opt/java/jdk-13.0.1
-
+export JAVA14_HOME=/opt/java/open-jdk-1.8.232
 
 export JAVAzulu11_HOME=/opt/java/zulu11.35.13-ca-jdk11.0.5-linux_x64
 
 export RUNTIME_JAVA_HOME=$JAVA11_HOME
-export JAVA_HOME=$JAVA13_HOME
+export JAVA_HOME=$JAVA14_HOME
 
 export MAVEN_HOME=/opt/maven/apache-maven-3.5.3
 
